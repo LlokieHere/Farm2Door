@@ -215,3 +215,28 @@ button:active {
   background: rgba(255,255,255,0.08);
   color: var(--white);
 }
+
+/* =========================
+   STATS ROW
+========================= */
+
+.stat-label {
+  color: var(--off-white);
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 0.95rem;
+  margin-bottom: 2px;
+}
+
+.stat-value {
+  color: var(--light-gray);
+  font-family: var(--font-body);
+  font-size: 0.88rem;
+}
+
+.stat-divider {
+  width: 1px;
+  height: 36px;
+  background-color: rgba(255,255,255,0.15);
+  align-self: center;
+}
