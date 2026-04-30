@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/cart.css">
+    <link rel="icon" type="image/png" href="../asset/Icon.png">
+    <title>Farm2Door – Cart</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Playfair+Display:wght@700;900&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg navbar-dark">
+    <div class="container">
+        <a class="navbar-brand" href="#">
+            <img src="../asset/site_logo.png" class="navbar-logo" alt="Farm2Door Logo">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavId">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="collapsibleNavId">
+            <ul class="navbar-nav ms-auto nav-gap">
+                <li class="nav-item"><a class="nav-link" href="home.html">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="about_us.html">About us</a></li>
+                <li class="nav-item"><a class="nav-link" href="product.html">Products</a></li>
+                <li class="nav-item"><a class="nav-link" href="register.html">Register</a></li>
+                <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                <li class="nav-item"><a class="nav-link" href="biography.html">Biography</a></li>
+                <li class="nav-item cart-nav-item">
+                    <a class="nav-link cart-link active" href="cart.html">
+                        <i class="bi bi-cart"></i> Cart
+                        <span class="cart-badge" id="cartBadge">0</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container mt-4 pb-5">
+    <div class="cart-layout">
+
+        <!-- LEFT: CART ITEMS -->
+        <div class="cart-main">
+            <div class="section-header">
+                <h1>Your Cart</h1>
+                <button class="clear-btn" id="clearBtn" onclick="clearCart()">
+                    <i class="bi bi-trash3"></i> Clear all
+                </button>
+            </div>
+
+            <!-- EMPTY STATE -->
+            <div class="empty-state" id="emptyState">
+                <div class="empty-icon">🛒</div>
+                <h2>Your cart is empty</h2>
+                <p>Head over to our products page and add some fresh goodies!</p>
+                <a href="product.html" class="shop-btn">
+                    <i class="bi bi-bag"></i> Browse Products
+                </a>
+            </div>
+
+            <!-- CART ITEM LIST -->
+            <div id="cartList"></div>
+        </div>
+
+        <!-- RIGHT: ORDER SUMMARY -->
+        <div class="cart-sidebar">
+            <div class="summary-card">
+                <h2 class="summary-title">Order Summary</h2>
+
+                <div class="summary-row">
+                    <span>Subtotal</span>
+                    <span id="subtotal">$0.00</span>
+                </div>
+                <div class="summary-row">
+                    <span>Delivery</span>
+                    <span id="deliveryFee">$0.00</span>
+                </div>
+                <div class="summary-row free-tag" id="freeDeliveryNote" style="display:none;">
+                    <span><i class="bi bi-truck"></i> Free delivery applied!</span>
+                    <span style="color: var(--green);">–$4.99</span>
+                </div>
+                <div class="summary-divider"></div>
+                <div class="summary-row total-row">
+                    <span>Total</span>
+                    <span id="totalPrice">$0.00</span>
+                </div>
+
+                <div class="delivery-notice" id="deliveryNotice"></div>
+
+                <button class="checkout-btn" id="checkoutBtn" onclick="checkout()">
+                    <i class="bi bi-bag-check"></i> Checkout
+                </button>
+
+                <a href="product.html" class="continue-link">
+                    <i class="bi bi-arrow-left"></i> Continue shopping
+                </a>
+
+                <!-- PERKS -->
+                <div class="perk-list">
+                    <div class="perk"><i class="bi bi-shield-check"></i> Secure checkout</div>
+                    <div class="perk"><i class="bi bi-arrow-counterclockwise"></i> Easy returns</div>
+                    <div class="perk"><i class="bi bi-leaf"></i> 100% organic</div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!-- CHECKOUT MODAL -->
+<div class="modal-overlay" id="modalOverlay">
+    <div class="modal-box">
+        <div class="modal-icon">🎉</div>
+        <h2>Order Placed!</h2>
+        <p>Thank you for your order. Your fresh produce is on its way!</p>
+        <button class="modal-close-btn" onclick="closeModal()">Back to Home</button>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+    const FREE_DELIVERY_THRESHOLD = 50;
+    const DELIVERY_FEE = 4.99;
+
+    function getCart() {
+        try { return JSON.parse(localStorage.getItem('f2d_cart')) || []; }
+        catch { return []; }
+    }
+
+    function saveCart(cart) {
+        localStorage.setItem('f2d_cart', JSON.stringify(cart));
+    }
+
+    function updateBadge() {
+        const cart = getCart();
+        const total = cart.reduce((sum, i) => sum + i.qty, 0);
+        const badge = document.getElementById('cartBadge');
+        badge.textContent = total;
+        badge.style.display = total > 0 ? 'inline-flex' : 'none';
+    }
+
+    function renderCart() {
+        const cart = getCart();
+        const list = document.getElementById('cartList');
+        const empty = document.getElementById('emptyState');
+        const clearBtn = document.getElementById('clearBtn');
+        const checkoutBtn = document.getElementById('checkoutBtn');
+
+        if (cart.length === 0) {
+            empty.style.display = 'flex';
+            list.innerHTML = '';
+            clearBtn.style.display = 'none';
+            checkoutBtn.disabled = true;
+            updateSummary(cart);
+            return;
+        }
+
+        empty.style.display = 'none';
+        clearBtn.style.display = 'flex';
+        checkoutBtn.disabled = false;
+
+        list.innerHTML = cart.map((item, idx) => `
+            <div class="cart-item" style="animation-delay:${idx * 0.07}s">
+                <div class="cart-item-emoji">${item.emoji}</div>
+                <div class="cart-item-info">
+                    <div class="cart-item-name">${item.name}</div>
+                    <div class="cart-item-price">$${item.price.toFixed(2)} each</div>
+                </div>
+                <div class="qty-controls">
+                    <button class="qty-btn" onclick="changeQty('${item.name}', -1)"><i class="bi bi-dash"></i></button>
+                    <span class="qty-val">${item.qty}</span>
+                    <button class="qty-btn" onclick="changeQty('${item.name}', 1)"><i class="bi bi-plus-lg"></i></button>
+                </div>
+                <div class="cart-item-total">$${(item.price * item.qty).toFixed(2)}</div>
+                <button class="remove-btn" onclick="removeItem('${item.name}')"><i class="bi bi-x-lg"></i></button>
+            </div>
+        `).join('');
+
+        updateSummary(cart);
+        updateBadge();
+    }
+
+    function updateSummary(cart) {
+        const subtotal = cart.reduce((sum, i) => sum + i.price * i.qty, 0);
+        const freeDelivery = subtotal >= FREE_DELIVERY_THRESHOLD;
+        const delivery = cart.length === 0 ? 0 : (freeDelivery ? 0 : DELIVERY_FEE);
+        const total = subtotal + delivery;
+
+        document.getElementById('subtotal').textContent = '$' + subtotal.toFixed(2);
+        document.getElementById('deliveryFee').textContent = freeDelivery ? '$0.00' : (cart.length === 0 ? '$0.00' : '$' + DELIVERY_FEE.toFixed(2));
+        document.getElementById('totalPrice').textContent = '$' + total.toFixed(2);
+
+        const noteEl = document.getElementById('freeDeliveryNote');
+        const noticeEl = document.getElementById('deliveryNotice');
+
+        if (freeDelivery && cart.length > 0) {
+            noteEl.style.display = 'flex';
+            noticeEl.textContent = '';
+        } else {
+            noteEl.style.display = 'none';
+            if (cart.length > 0 && subtotal < FREE_DELIVERY_THRESHOLD) {
+                const remaining = (FREE_DELIVERY_THRESHOLD - subtotal).toFixed(2);
+                noticeEl.innerHTML = `<i class="bi bi-info-circle"></i> Add $${remaining} more for free delivery!`;
+                noticeEl.style.display = 'block';
+            } else {
+                noticeEl.style.display = 'none';
+            }
+        }
+    }
+
+    function changeQty(name, delta) {
+        let cart = getCart();
+        const item = cart.find(i => i.name === name);
+        if (!item) return;
+        item.qty += delta;
+        if (item.qty <= 0) cart = cart.filter(i => i.name !== name);
+        saveCart(cart);
+        renderCart();
+    }
+
+    function removeItem(name) {
+        let cart = getCart().filter(i => i.name !== name);
+        saveCart(cart);
+        renderCart();
+    }
+
+    function clearCart() {
+        saveCart([]);
+        renderCart();
+    }
+
+    function checkout() {
+        document.getElementById('modalOverlay').classList.add('show');
+    }
+
+    function closeModal() {
+        document.getElementById('modalOverlay').classList.remove('show');
+        clearCart();
+        window.location.href = 'home.html';
+    }
+
+    // Init
+    renderCart();
+</script>
+</body>
+</html>

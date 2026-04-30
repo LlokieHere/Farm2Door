@@ -3,59 +3,469 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Farm2Home</title>
-     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-</head>
-    <body>
-        <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: var(--dark-navy);">
-    <div class="container">
+    <link rel="stylesheet" href="../css/product.css">
+    <link rel="icon" type="image/png" href="../asset/Icon.png">
+    <title>Farm2Door – Products</title>
 
-        <a class="navbar-brand text-dark" href="#">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Playfair+Display:wght@700;900&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg navbar-dark">
+    <div class="container">
+        <a class="navbar-brand" href="#">
             <img src="../asset/site_logo.png" class="navbar-logo" alt="Farm2Door Logo">
         </a>
-
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavId">
             <span class="navbar-toggler-icon"></span>
         </button>
-
         <div class="collapse navbar-collapse" id="collapsibleNavId">
             <ul class="navbar-nav ms-auto nav-gap">
-                <li class="nav-item">
-                    <a class="nav-link active" href="home.html">Home</a>
-                </li>
-
-                <li class="nav-item">
-                    <a class="nav-link" href="about_us.html">About us</a>
-                </li>
-
-                <li class="nav-item">
-                    <a class="nav-link" href="product.html">Products</a>
-                </li>
-
-                <li class="nav-item">
-                    <a class="nav-link" href="register.html">Register</a>
-                </li>
-
-                <li class="nav-item">
-                    <a class="nav-link" href="contact.html">Contact</a>
-                </li>
-
-                <li class="nav-item">
-                    <a class="nav-link" href="biography.html">Biography</a>
-                </li>
-
-                <li class="nav-item" style="background-color: var(--orange); border-radius: 5px;">
-                    <a class="nav-link" href="cart.html" style="color: var(--white) !important;">
+                <li class="nav-item"><a class="nav-link" href="home.html">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="about_us.html">About us</a></li>
+                <li class="nav-item"><a class="nav-link active" href="product.html">Products</a></li>
+                <li class="nav-item"><a class="nav-link" href="register.html">Register</a></li>
+                <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                <li class="nav-item"><a class="nav-link" href="biography.html">Biography</a></li>
+                <li class="nav-item cart-nav-item">
+                    <a class="nav-link cart-link" href="cart.html">
                         <i class="bi bi-cart"></i> Cart
+                        <span class="cart-badge" id="cartBadge">0</span>
                     </a>
                 </li>
-
             </ul>
         </div>
-
     </div>
 </nav>
 
-    
+<!-- PAGE HEADER -->
+<div class="container mt-4">
+    <div class="page-header">
+        <div>
+            <h1>Our Products</h1>
+            <p class="header-sub">Farm-fresh, locally sourced — picked just for you.</p>
+        </div>
+        <!-- FILTER TABS -->
+        <div class="filter-tabs" id="filterTabs">
+            <button class="filter-btn active" data-filter="all">All</button>
+            <button class="filter-btn" data-filter="vegetables">Vegetables</button>
+            <button class="filter-btn" data-filter="fruits">Fruits</button>
+            <button class="filter-btn" data-filter="herbs">Herbs</button>
+            <button class="filter-btn" data-filter="dairy">Dairy</button>
+        </div>
+    </div>
+</div>
+
+<!-- TOAST NOTIFICATION -->
+<div class="toast-wrap" id="toastWrap">
+    <div class="toast-msg" id="toastMsg">
+        <i class="bi bi-check-circle-fill"></i>
+        <span id="toastText">Item added to cart!</span>
+    </div>
+</div>
+
+<!-- PRODUCT GRID -->
+<div class="container mt-3 pb-5">
+    <div class="product-grid" id="productGrid">
+
+        <!-- VEGETABLES -->
+        <div class="product-card" data-category="vegetables">
+            <div class="product-badge">Organic</div>
+            <div class="product-img-wrap">
+                <div class="product-emoji">🥦</div>
+            </div>
+            <div class="product-info">
+                <span class="product-tag">Vegetables</span>
+                <h3 class="product-name">Broccoli</h3>
+                <p class="product-desc">Crisp, nutrient-rich crowns harvested at peak freshness.</p>
+                <div class="product-footer">
+                    <span class="product-price">$2.49 <small>/ head</small></span>
+                    <button class="add-btn" onclick="addToCart('Broccoli', 2.49, '🥦')">
+                        <i class="bi bi-plus-lg"></i> Add
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="product-card" data-category="vegetables">
+            <div class="product-img-wrap">
+                <div class="product-emoji">🥕</div>
+            </div>
+            <div class="product-info">
+                <span class="product-tag">Vegetables</span>
+                <h3 class="product-name">Carrots</h3>
+                <p class="product-desc">Sweet, crunchy baby carrots straight from the field.</p>
+                <div class="product-footer">
+                    <span class="product-price">$1.99 <small>/ bunch</small></span>
+                    <button class="add-btn" onclick="addToCart('Carrots', 1.99, '🥕')">
+                        <i class="bi bi-plus-lg"></i> Add
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="product-card" data-category="vegetables">
+            <div class="product-badge">Popular</div>
+            <div class="product-img-wrap">
+                <div class="product-emoji">🍅</div>
+            </div>
+            <div class="product-info">
+                <span class="product-tag">Vegetables</span>
+                <h3 class="product-name">Tomatoes</h3>
+                <p class="product-desc">Vine-ripened heirloom tomatoes bursting with flavor.</p>
+                <div class="product-footer">
+                    <span class="product-price">$3.29 <small>/ lb</small></span>
+                    <button class="add-btn" onclick="addToCart('Tomatoes', 3.29, '🍅')">
+                        <i class="bi bi-plus-lg"></i> Add
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="product-card" data-category="vegetables">
+            <div class="product-img-wrap">
+                <div class="product-emoji">🥬</div>
+            </div>
+            <div class="product-info">
+                <span class="product-tag">Vegetables</span>
+                <h3 class="product-name">Lettuce</h3>
+                <p class="product-desc">Crisp romaine heads, perfect for salads and wraps.</p>
+                <div class="product-footer">
+                    <span class="product-price">$1.79 <small>/ head</small></span>
+                    <button class="add-btn" onclick="addToCart('Lettuce', 1.79, '🥬')">
+                        <i class="bi bi-plus-lg"></i> Add
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="product-card" data-category="vegetables">
+            <div class="product-img-wrap">
+                <div class="product-emoji">🫑</div>
+            </div>
+            <div class="product-info">
+                <span class="product-tag">Vegetables</span>
+                <h3 class="product-name">Bell Peppers</h3>
+                <p class="product-desc">Colorful, sweet peppers with a satisfying crunch.</p>
+                <div class="product-footer">
+                    <span class="product-price">$2.19 <small>/ each</small></span>
+                    <button class="add-btn" onclick="addToCart('Bell Peppers', 2.19, '🫑')">
+                        <i class="bi bi-plus-lg"></i> Add
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="product-card" data-category="vegetables">
+            <div class="product-img-wrap">
+                <div class="product-emoji">🌽</div>
+            </div>
+            <div class="product-info">
+                <span class="product-tag">Vegetables</span>
+                <h3 class="product-name">Sweet Corn</h3>
+                <p class="product-desc">Golden ears of corn, locally grown and tender-sweet.</p>
+                <div class="product-footer">
+                    <span class="product-price">$0.89 <small>/ ear</small></span>
+                    <button class="add-btn" onclick="addToCart('Sweet Corn', 0.89, '🌽')">
+                        <i class="bi bi-plus-lg"></i> Add
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="product-card" data-category="vegetables">
+            <div class="product-img-wrap">
+                <div class="product-emoji">🥔</div>
+            </div>
+            <div class="product-info">
+                <span class="product-tag">Vegetables</span>
+                <h3 class="product-name">Potatoes</h3>
+                <p class="product-desc">Fresh, creamy potatoes perfect for roasting or mashing.</p>
+                <div class="product-footer">
+                    <span class="product-price">$1.29 <small>/ lb</small></span>
+                    <button class="add-btn" onclick="addToCart('Potatoes', 1.29, '🥔')">
+                        <i class="bi bi-plus-lg"></i> Add
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="product-card" data-category="vegetables">
+            <div class="product-img-wrap">
+                <div class="product-emoji">🍆</div>
+            </div>
+            <div class="product-info">
+                <span class="product-tag">Eggplant</span>
+                <h3 class="product-name">Eggplant</h3>
+                <p class="product-desc">Smooth, mild eggplant perfect for grilling or roasting.</p>
+                <div class="product-footer">
+                    <span class="product-price">$1.99 <small>/ lb</small></span>
+                    <button class="add-btn" onclick="addToCart('Eggplant', 1.99, '🍆')">
+                        <i class="bi bi-plus-lg"></i> Add
+                    </button>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- FRUITS -->
+        <div class="product-card" data-category="fruits">
+            <div class="product-badge">Seasonal</div>
+            <div class="product-img-wrap">
+                <div class="product-emoji">🍓</div>
+            </div>
+            <div class="product-info">
+                <span class="product-tag">Fruits</span>
+                <h3 class="product-name">Strawberries</h3>
+                <p class="product-desc">Sun-kissed, juicy strawberries picked at peak season.</p>
+                <div class="product-footer">
+                    <span class="product-price">$4.49 <small>/ pint</small></span>
+                    <button class="add-btn" onclick="addToCart('Strawberries', 4.49, '🍓')">
+                        <i class="bi bi-plus-lg"></i> Add
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="product-card" data-category="fruits">
+            <div class="product-img-wrap">
+                <div class="product-emoji">🍎</div>
+            </div>
+            <div class="product-info">
+                <span class="product-tag">Fruits</span>
+                <h3 class="product-name">Honeycrisp Apples</h3>
+                <p class="product-desc">Perfectly balanced sweet-tart flavor in every bite.</p>
+                <div class="product-footer">
+                    <span class="product-price">$1.49 <small>/ each</small></span>
+                    <button class="add-btn" onclick="addToCart('Honeycrisp Apples', 1.49, '🍎')">
+                        <i class="bi bi-plus-lg"></i> Add
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="product-card" data-category="fruits">
+            <div class="product-img-wrap">
+                <div class="product-emoji">🫐</div>
+            </div>
+            <div class="product-info">
+                <span class="product-tag">Fruits</span>
+                <h3 class="product-name">Blueberries</h3>
+                <p class="product-desc">Antioxidant-rich berries, plump and bursting with flavor.</p>
+                <div class="product-footer">
+                    <span class="product-price">$5.99 <small>/ pint</small></span>
+                    <button class="add-btn" onclick="addToCart('Blueberries', 5.99, '🫐')">
+                        <i class="bi bi-plus-lg"></i> Add
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="product-card" data-category="fruits">
+            <div class="product-img-wrap">
+                <div class="product-emoji">🍑</div>
+            </div>
+            <div class="product-info">
+                <span class="product-tag">Fruits</span>
+                <h3 class="product-name">Peaches</h3>
+                <p class="product-desc">Fragrant, soft peaches dripping with natural sweetness.</p>
+                <div class="product-footer">
+                    <span class="product-price">$2.79 <small>/ each</small></span>
+                    <button class="add-btn" onclick="addToCart('Peaches', 2.79, '🍑')">
+                        <i class="bi bi-plus-lg"></i> Add
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="product-card" data-category="fruits">
+            <div class="product-img-wrap">
+                <div class="product-emoji">🥒</div>
+            </div>
+            <div class="product-info">
+                <span class="product-tag">Fruits</span>
+                <h3 class="product-name">Zucchini</h3>
+                <p class="product-desc">Crisp and mild, perfect for grilling or sautéing.</p>
+                <div class="product-footer">
+                    <span class="product-price">$2.79 <small>/ each</small></span>
+                    <button class="add-btn" onclick="addToCart('Zucchini', 2.79, '🥒')">
+                        <i class="bi bi-plus-lg"></i> Add
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- HERBS -->
+        <div class="product-card" data-category="herbs">
+            <div class="product-img-wrap">
+                <div class="product-emoji">🌿</div>
+            </div>
+            <div class="product-info">
+                <span class="product-tag">Herbs</span>
+                <h3 class="product-name">Fresh Basil</h3>
+                <p class="product-desc">Aromatic Italian basil — ideal for pestos and pastas.</p>
+                <div class="product-footer">
+                    <span class="product-price">$1.99 <small>/ bunch</small></span>
+                    <button class="add-btn" onclick="addToCart('Fresh Basil', 1.99, '🌿')">
+                        <i class="bi bi-plus-lg"></i> Add
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="product-card" data-category="herbs">
+            <div class="product-img-wrap">
+                <div class="product-emoji">🫚</div>
+            </div>
+            <div class="product-info">
+                <span class="product-tag">Herbs</span>
+                <h3 class="product-name">Rosemary</h3>
+                <p class="product-desc">Robust woody sprigs perfect for roasts and marinades.</p>
+                <div class="product-footer">
+                    <span class="product-price">$1.49 <small>/ sprig</small></span>
+                    <button class="add-btn" onclick="addToCart('Rosemary', 1.49, '🌱')">
+                        <i class="bi bi-plus-lg"></i> Add
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="product-card" data-category="herbs">
+            <div class="product-img-wrap">
+                <div class="product-emoji">🧄</div>
+            </div>
+            <div class="product-info">
+                <span class="product-tag">Herbs</span>
+                <h3 class="product-name">Garlic</h3>
+                <p class="product-desc">Pungent, full-flavored bulbs from our local growers.</p>
+                <div class="product-footer">
+                    <span class="product-price">$0.99 <small>/ bulb</small></span>
+                    <button class="add-btn" onclick="addToCart('Garlic', 0.99, '🧄')">
+                        <i class="bi bi-plus-lg"></i> Add
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- DAIRY -->
+        <div class="product-card" data-category="dairy">
+            <div class="product-badge">Local</div>
+            <div class="product-img-wrap">
+                <div class="product-emoji">🥛</div>
+            </div>
+            <div class="product-info">
+                <span class="product-tag">Dairy</span>
+                <h3 class="product-name">Whole Milk</h3>
+                <p class="product-desc">Creamy, pasture-raised whole milk from local farms.</p>
+                <div class="product-footer">
+                    <span class="product-price">$4.29 <small>/ half-gal</small></span>
+                    <button class="add-btn" onclick="addToCart('Whole Milk', 4.29, '🥛')">
+                        <i class="bi bi-plus-lg"></i> Add
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="product-card" data-category="dairy">
+            <div class="product-img-wrap">
+                <div class="product-emoji">🧀</div>
+            </div>
+            <div class="product-info">
+                <span class="product-tag">Dairy</span>
+                <h3 class="product-name">Farmhouse Cheese</h3>
+                <p class="product-desc">Aged cheddar with a sharp, complex character.</p>
+                <div class="product-footer">
+                    <span class="product-price">$6.49 <small>/ 8 oz</small></span>
+                    <button class="add-btn" onclick="addToCart('Farmhouse Cheese', 6.49, '🧀')">
+                        <i class="bi bi-plus-lg"></i> Add
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="product-card" data-category="dairy">
+            <div class="product-img-wrap">
+                <div class="product-emoji">🥚</div>
+            </div>
+            <div class="product-info">
+                <span class="product-tag">Dairy</span>
+                <h3 class="product-name">Free-Range Eggs</h3>
+                <p class="product-desc">Rich golden-yolk eggs from pasture-raised hens.</p>
+                <div class="product-footer">
+                    <span class="product-price">$5.99 <small>/ dozen</small></span>
+                    <button class="add-btn" onclick="addToCart('Free-Range Eggs', 5.99, '🥚')">
+                        <i class="bi bi-plus-lg"></i> Add
+                    </button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+    // ── CART LOGIC ──
+    function getCart() {
+        try { return JSON.parse(localStorage.getItem('f2d_cart')) || []; }
+        catch { return []; }
+    }
+
+    function saveCart(cart) {
+        localStorage.setItem('f2d_cart', JSON.stringify(cart));
+    }
+
+    function updateBadge() {
+        const cart = getCart();
+        const total = cart.reduce((sum, i) => sum + i.qty, 0);
+        document.getElementById('cartBadge').textContent = total;
+        document.getElementById('cartBadge').style.display = total > 0 ? 'inline-flex' : 'none';
+    }
+
+    function addToCart(name, price, emoji) {
+        const cart = getCart();
+        const existing = cart.find(i => i.name === name);
+        if (existing) {
+            existing.qty++;
+        } else {
+            cart.push({ name, price, emoji, qty: 1 });
+        }
+        saveCart(cart);
+        updateBadge();
+        showToast(name);
+    }
+
+    function showToast(name) {
+        document.getElementById('toastText').textContent = `${name} added to cart!`;
+        const wrap = document.getElementById('toastWrap');
+        wrap.classList.add('show');
+        clearTimeout(wrap._t);
+        wrap._t = setTimeout(() => wrap.classList.remove('show'), 2500);
+    }
+
+    // ── FILTER LOGIC ──
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            const filter = btn.dataset.filter;
+            document.querySelectorAll('.product-card').forEach(card => {
+                const match = filter === 'all' || card.dataset.category === filter;
+                card.style.display = match ? '' : 'none';
+                if (match) {
+                    card.style.animation = 'none';
+                    card.offsetHeight;
+                    card.style.animation = '';
+                }
+            });
+        });
+    });
+
+    // Init badge on load
+    updateBadge();
+</script>
 </body>
 </html>
