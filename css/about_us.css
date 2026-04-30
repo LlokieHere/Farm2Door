@@ -1,0 +1,83 @@
+:root {
+  --green:      #628141;
+  --dark-green: #40513B;
+  --light-gray: #BFC9D1;
+  --orange:     #FF9B51;
+  --off-white:  #EAEFEF;
+  --dark-navy:  #25343F;
+  --white:      #ffffff;
+
+  --font-display: 'Bebas Neue','Playfair Display', serif;
+  --font-body:    'DM Sans', sans-serif;
+
+  --radius:    12px;
+  --shadow:    0 4px 24px rgba(37,52,63,0.10);
+  --shadow-lg: 0 8px 40px rgba(37,52,63,0.16);
+}
+
+/* BODY & BACKGROUND */
+body {
+  background-image: url("../asset/background.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center 70%;
+  font-family: var(--font-body);
+  margin: 0;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: linear-gradient(80deg, #25343F, #40513B, #628141);
+  opacity: 0.85;
+  z-index: -1;
+  animation: bgMove 8s ease-in-out infinite alternate;
+}
+
+@keyframes bgMove {
+  from { filter: hue-rotate(0deg); }
+  to   { filter: hue-rotate(15deg); }
+}
+
+/* LAYOUT */
+.mt-6 {
+  margin-top: 2rem;
+}
+
+/* NAVBAR */
+.navbar {
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+  background-color: rgba(37, 52, 63, 0.85) !important;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+.navbar-logo {
+  height: 50px;
+  width: auto;
+  object-fit: contain;
+}
+
+.nav-link {
+  color: var(--light-gray) !important;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 500;
+  padding: 6px 14px !important;
+  border-radius: 8px;
+  transition: all 0.2s;
+}
+
+.nav-link:hover,
+.nav-link.active {
+  color: var(--white) !important;
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.nav-gap {
+  gap: 0.25rem;
+}
+
