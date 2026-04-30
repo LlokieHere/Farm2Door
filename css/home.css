@@ -7,7 +7,7 @@
   --dark-navy:  #25343F;
   --white:      #ffffff;
 
-  --font-display: 'Playfair Display', serif;
+  --font-display: 'Bebas Neue','Playfair Display', serif;
   --font-body:    'DM Sans', sans-serif;
 
   --radius:    12px;
@@ -15,10 +15,7 @@
   --shadow-lg: 0 8px 40px rgba(37,52,63,0.16);
 }
 
-/* =========================
-   BODY & BACKGROUND
-========================= */
-
+/* BODY & BACKGROUND */
 body {
   background-image: url("../asset/background.jpg");
   background-repeat: no-repeat;
@@ -43,18 +40,12 @@ body::before {
   to   { filter: hue-rotate(15deg); }
 }
 
-/* =========================
-   LAYOUT
-========================= */
-
-.mt-8 {
-  margin-top: 6rem;
+/* LAYOUT */
+.mt-6 {
+  margin-top: 2rem;
 }
 
-/* =========================
-   NAVBAR
-========================= */
-
+/* NAVBAR */
 .navbar {
   padding-top: 0.75rem;
   padding-bottom: 0.75rem;
@@ -64,17 +55,12 @@ body::before {
   border-bottom: 1px solid rgba(255,255,255,0.08);
 }
 
-.nav-items{
-    color: var(--light-gray);
-}
-
 .navbar-logo {
   height: 50px;
   width: auto;
   object-fit: contain;
 }
 
-/* Nav links — light text on dark bg */
 .nav-link {
   color: var(--light-gray) !important;
   font-family: var(--font-body);
@@ -95,16 +81,43 @@ body::before {
   gap: 0.25rem;
 }
 
-/* =========================
-   TYPOGRAPHY
-========================= */
+/* HERO CARD */
+.hero-card {
+  position: relative;
+  overflow: hidden;
+  min-height: 85vh;
+  background: rgba(37, 52, 63, 0.5);
+  backdrop-filter: blur(1px);
+  -webkit-backdrop-filter: blur(11px);
+  border-radius: 15px;
+  box-shadow: none;
+}
 
+.hero-img {
+  position: absolute;
+  right: -60px;
+  bottom: -100px;
+  width: 750px;
+  transform: rotate(-12deg);
+  filter: drop-shadow(10px 25px 30px rgba(0,0,0,0.3));
+
+transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.hero-img:hover .transition{
+  transform: rotate(-12deg) translate(10px, -10px);
+  filter: drop-shadow(15px 30px 40px rgba(0,0,0,0.4));
+}
+
+/* TYPOGRAPHY */
 h1 {
+  letter-spacing: 3px;
   font-family: var(--font-display);
-  font-size: clamp(2.4rem, 5vw, 4.5rem);
+  font-size: clamp(2.4rem, 5vw, 5.5rem) !important;
   font-weight: 900;
-  color: var(--off-white);
+  color: var(--off-white) !important;
   line-height: 1.15;
+  white-space: nowrap;
   margin-bottom: 1rem;
 }
 
@@ -115,10 +128,7 @@ p {
   line-height: 1.75;
 }
 
-/* =========================
-   BUTTONS — BASE
-========================= */
-
+/* BUTTONS BASE */
 button {
   font-family: var(--font-body);
   font-size: 0.95rem;
@@ -135,7 +145,6 @@ button {
   gap: 0.4em;
 }
 
-/* ripple layer */
 .transition {
   transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
   transition-duration: 500ms;
@@ -171,10 +180,7 @@ button:active {
   transform: scale(0.97);
 }
 
-/* =========================
-   PRIMARY BUTTON — ORDER NOW
-========================= */
-
+/* PRIMARY BUTTON */
 .btn-primary-custom {
   background: var(--orange);
   color: var(--white);
@@ -192,10 +198,7 @@ button:active {
   color: var(--white);
 }
 
-/* =========================
-   SECONDARY BUTTON — CREATE ACCOUNT
-========================= */
-
+/* SECONDARY BUTTON */
 .btn-secondary-custom {
   background: transparent;
   color: var(--white);
@@ -211,29 +214,4 @@ button:active {
   border-color: var(--white);
   background: rgba(255,255,255,0.08);
   color: var(--white);
-}
-
-/* =========================
-   STATS ROW
-========================= */
-
-.stat-label {
-  color: var(--off-white);
-  font-family: var(--font-body);
-  font-weight: 700;
-  font-size: 0.95rem;
-  margin-bottom: 2px;
-}
-
-.stat-value {
-  color: var(--light-gray);
-  font-family: var(--font-body);
-  font-size: 0.88rem;
-}
-
-.stat-divider {
-  width: 1px;
-  height: 36px;
-  background-color: rgba(255,255,255,0.15);
-  align-self: center;
 }
