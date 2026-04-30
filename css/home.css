@@ -1,3 +1,163 @@
-.custom-mt {
-    margin-top: 6rem;
+:root {
+  --green: #628141;
+  --dark-green: #40513B;
+  --light-gray: #BFC9D1;
+  --orange: #FF9B51;
+  --off-white: #EAEFEF;
+  --dark-navy: #25343F;
+  --white: #ffffff;
+
+  --font-display: 'Playfair Display', serif;
+  --font-body: 'DM Sans', sans-serif;
+
+  --radius: 12px;
+  --shadow: 0 4px 24px rgba(37,52,63,0.10);
+  --shadow-lg: 0 8px 40px rgba(37,52,63,0.16);
+}
+
+/* =========================
+   LAYOUT
+========================= */
+
+.mt-8 {
+  margin-top: 6rem;
+}
+
+/* =========================
+   NAVBAR
+========================= */
+
+.navbar {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  align-items: center;
+}
+
+.navbar-logo {
+  height: 250px;
+  width: auto;
+  object-fit: contain;
+}
+
+/* =========================
+   BASE BUTTON (UIVERSE STYLE)
+========================= */
+
+button {
+  font-size: 17px;
+  padding: 1em 2.7em;
+  font-weight: 500;
+  background: #1f2937;
+  color: white;
+  border: none;
+  position: relative;
+  overflow: hidden;
+  border-radius: 0.6em;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+/* =========================
+   GRADIENT LAYER (FIXED)
+========================= */
+
+.gradient {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  border-radius: 0.6em;
+  margin-top: -0.25em;
+
+  background-image: linear-gradient(
+    135deg,
+    var(--green),
+    var(--dark-green),
+    var(--dark-navy)
+  );
+}
+
+/* =========================
+   LABEL
+========================= */
+
+.label {
+  position: relative;
+  top: -1px;
+  z-index: 2;
+}
+
+/* =========================
+   ANIMATION LAYER
+========================= */
+
+.transition {
+  transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
+  transition-duration: 500ms;
+  background-color: rgba(16, 185, 129, 0.6);
+  border-radius: 9999px;
+  width: 0;
+  height: 0;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+button:hover .transition {
+  width: 14em;
+  height: 14em;
+}
+
+/* click effect */
+button:active {
+  transform: scale(0.97);
+}
+
+/* =========================
+   PRIMARY BUTTON (ORDER NOW)
+========================= */
+
+.btn-primary {
+  background: var(--green);
+}
+
+.btn-primary .gradient {
+  background-image: linear-gradient(
+    135deg,
+    var(--green),
+    var(--dark-green),
+    var(--orange)
+  );
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+
+/* =========================
+   SECONDARY BUTTON (CREATE ACCOUNT)
+========================= */
+
+.btn-secondary {
+  background: var(--dark-navy);
+  opacity: 0.9;
+}
+
+.btn-secondary .gradient {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+/* =========================
+   OPTIONAL TEXT FIX
+========================= */
+
+h1 {
+  font-family: var(--font-display);
+}
+
+p {
+  font-family: var(--font-body);
 }
