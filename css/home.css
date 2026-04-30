@@ -104,9 +104,9 @@ body::before {
 transition: transform 0.3s ease, filter 0.3s ease;
 }
 
-.hero-img:hover .transition{
+.hero-img:hover {
   transform: rotate(-12deg) translate(10px, -10px);
-  filter: drop-shadow(15px 30px 40px rgba(0,0,0,0.4));
+  filter: drop-shadow(15px 30px 40px var(--green));
 }
 
 /* TYPOGRAPHY */
@@ -367,8 +367,84 @@ h1 {
   }
 }
 
+
+/* ── HERO FADE UP ANIMATION ── */
+
+/* Animate whole hero card */
+.hero-card {
+  opacity: 0;
+  animation: fadeUp 0.7s ease forwards 0.1s;
+}
+
+/* Stagger inner content */
+.hero-card h1 {
+  opacity: 0;
+  animation: fadeUp 0.7s ease forwards 0.2s;
+}
+
+.hero-card p {
+  opacity: 0;
+  animation: fadeUp 0.7s ease forwards 0.3s;
+}
+
+/* Buttons */
+.hero-card .btn-primary-custom,
+.hero-card .btn-secondary-custom {
+  opacity: 0;
+  animation: fadeUp 0.7s ease forwards 0.4s;
+}
+
+/* Stats (Free Delivery, etc.) */
+.hero-card .d-flex.mt-5 {
+  opacity: 0;
+  animation: fadeUp 0.7s ease forwards 0.5s;
+}
+
+/* Image */
+.hero-img {
+  opacity: 0;
+  animation: fadeUp 0.7s ease forwards 0.6s;
+}
 /* ── ANIMATION ── */
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(20px); }
   to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── HERO FADE UP ANIMATION ── */
+
+/* Animate whole hero card */
+.hero-card {
+  opacity: 0;
+  animation: fadeUp 0.7s ease forwards 0.1s;
+}
+
+/* Stagger inner content */
+.hero-card h1 {
+  opacity: 0;
+  animation: fadeUp 0.7s ease forwards 0.2s;
+}
+
+.hero-card p {
+  opacity: 0;
+  animation: fadeUp 0.7s ease forwards 0.3s;
+}
+
+/* Buttons */
+.hero-card .btn-primary-custom,
+.hero-card .btn-secondary-custom {
+  opacity: 0;
+  animation: fadeUp 0.7s ease forwards 0.4s;
+}
+
+/* Stats (Free Delivery, etc.) */
+.hero-card .d-flex.mt-5 {
+  opacity: 0;
+  animation: fadeUp 0.7s ease forwards 0.5s;
+}
+
+/* Image */
+.hero-img {
+  opacity: 0;
+  animation: fadeUp 0.7s ease forwards 0.6s;
 }
