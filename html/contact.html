@@ -3,50 +3,199 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Farm2Home</title>
-     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/contact.css">
+    <link rel="icon" type="image/png" href="../asset/Icon.png">
+    <title>Contact Us | Farm2Door</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 </head>
-    <body>
-        <nav class="navbar navbar-expand-sm navbar-dark" style="background-color: #e3f2fd;">
-        <div class="container-fluid">
-            <a class="navbar-brand text-dark" href="#">Farm2Door</a>
 
-            <button
-                class="navbar-toggler"
-                type="button"
-                data-bs-toggle="collapse"
-                data-bs-target="#collapsibleNavId"
-            >
-                <span class="navbar-toggler-icon"></span>
-            </button>
+<body>
 
-            <div class="collapse navbar-collapse" id="collapsibleNavId">
-                <!-- FIXED HERE -->
-                <ul class="navbar-nav ms-90px">
-                    <li class="nav-item">
-                        <a class="nav-link active text-dark" href="home.html">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-dark" href="about_us.html">About us</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-dark" href="product.html">Products</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-dark" href="register.html">Register</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-dark" href="contact.html">Contact</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-dark" href="biography.html">Biography</a>
-                    </li>
-                </ul>
-            </div>
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg navbar-dark">
+    <div class="container">
+
+        <a class="navbar-brand" href="#">
+            <img src="../asset/site_logo.png" class="navbar-logo">
+        </a>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavId">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="collapsibleNavId">
+            <ul class="navbar-nav ms-auto nav-gap">
+                <li class="nav-item"><a class="nav-link" href="home.html">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="about_us.html">About us</a></li>
+                <li class="nav-item"><a class="nav-link" href="product.html">Products</a></li>
+                <li class="nav-item"><a class="nav-link" href="register.html">Register</a></li>
+                <li class="nav-item"><a class="nav-link active" href="contact.html">Contact</a></li>
+                <li class="nav-item"><a class="nav-link" href="biography.html">Biography</a></li>
+
+                <li class="nav-item" style="background-color: var(--orange); border-radius: 5px; padding: 2px 10px;">
+                    <a class="nav-link" href="cart.html" style="color: var(--dark-navy) !important;">
+                        <i class="bi bi-cart"></i> Cart
+                    </a>  
+                </li>
+            </ul>
         </div>
-    </nav>
+    </div>
+</nav>
 
+<!-- CONTACT PAGE -->
+<div id="page-contact" class="page">
+  
+  <!-- HERO -->
+  <div class="contact-hero">
+    <h1>Contact Us</h1>
+    <p>We'd love to hear from you. Reach out anytime!</p>
+  </div>
 
+  <!-- MAIN -->
+  <section class="contact-main">
+    <div class="section-wrap">
+      <div class="contact-layout">
+
+        <!-- INFO -->
+        <div class="contact-info">
+          <h3>Get in Touch</h3>
+          <p class="sub">We're here to help Monday–Saturday, 7 AM to 6 PM.</p>
+
+          <div class="contact-item">
+            <div class="contact-icon"><i class="bi bi-envelope"></i></div>
+            <div class="contact-item-text">
+              <p class="label">Email</p>
+              <p>farm2door@email.com<br>support@farm2door.ph</p>
+            </div>
+          </div>
+
+          <div class="contact-item">
+            <div class="contact-icon"><i class="bi bi-telephone"></i></div>
+            <div class="contact-item-text">
+              <p class="label">Phone</p>
+              <p>+63 912 345 6789<br>+63 32 123 4567</p>
+            </div>
+          </div>
+
+          <div class="contact-item">
+            <div class="contact-icon"><i class="bi bi-geo-alt"></i></div>
+            <div class="contact-item-text">
+              <p class="label">Address</p>
+              <p>123 Farm Road, Brgy. Kamputhaw<br>Cebu City, Philippines 6000</p>
+            </div>
+          </div>
+
+          <div class="contact-item">
+            <div class="contact-icon"><i class="bi bi-clock"></i></div>
+            <div class="contact-item-text">
+              <p class="label">Business Hours</p>
+              <p>Mon–Sat: 7:00 AM – 6:00 PM<br>Sunday: 8:00 AM – 12:00 PM</p>
+            </div>
+          </div>
+
+          <div class="social-row">
+            <a class="social-btn"><i class="bi bi-facebook"></i></a>
+            <a class="social-btn"><i class="bi bi-instagram"></i></a>
+            <a class="social-btn"><i class="bi bi-twitter"></i></a>
+            <a class="social-btn"><i class="bi bi-youtube"></i></a>
+          </div>
+        </div>
+
+        <!-- FORM -->
+        <div class="contact-form-box">
+          <h3>Send Us a Message</h3>
+          <p class="sub">Fill out the form and we'll get back to you within 24 hours.</p>
+
+          <form>
+            <div class="form-group">
+              <label>Your Name *</label>
+              <input type="text" placeholder="Juan Dela Cruz" required>
+            </div>
+
+            <div class="form-group">
+              <label>Email Address *</label>
+              <input type="email" placeholder="you@email.com" required>
+            </div>
+
+            <div class="form-group">
+              <label>Subject</label>
+              <input type="text" placeholder="e.g. Order inquiry, Bulk purchase...">
+            </div>
+
+            <div class="form-group">
+              <label>Message *</label>
+              <textarea rows="5" placeholder="Write your message here..." required></textarea>
+            </div>
+
+            <button type="submit" class="contact-submit-btn">
+              Send Message <i class="bi bi-send"></i>
+            </button>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+<footer class="footer">
+  <div class="footer-wrap">
     
+    <!-- BRAND -->
+    <div class="footer-brand">
+      <div class="logo">🌿 Farm<span>2</span>Door</div>
+      <p>Fresh from local farms to your home. Supporting local growers and sustainable agriculture.</p>
+
+      <div class="footer-social">
+        <a href="#"><i class="bi bi-facebook"></i></a>
+        <a href="#"><i class="bi bi-instagram"></i></a>
+        <a href="#"><i class="bi bi-twitter"></i></a>
+        <a href="#"><i class="bi bi-youtube"></i></a>
+      </div>
+    </div>
+
+    <!-- LINKS -->
+    <div class="footer-col">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="home.html">Home</a></li>
+        <li><a href="product.html">Products</a></li>
+        <li><a href="about_us.html">About Us</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+
+    <!-- SUPPORT -->
+    <div class="footer-col">
+      <h4>Support</h4>
+      <ul>
+        <li><a href="#">FAQs</a></li>
+        <li><a href="#">Delivery Info</a></li>
+        <li><a href="#">Privacy Policy</a></li>
+        <li><a href="#">Terms & Conditions</a></li>
+      </ul>
+    </div>
+
+    <!-- CONTACT -->
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <ul class="footer-contact">
+        <li><i class="bi bi-envelope"></i> support@farm2door.ph</li>
+        <li><i class="bi bi-telephone"></i> +63 912 345 6789</li>
+        <li><i class="bi bi-geo-alt"></i> Cebu, Philippines</li>
+      </ul>
+    </div>
+
+  </div>
+
+  <!-- BOTTOM -->
+  <div class="footer-bottom">
+    © 2025 Farm2Door. All rights reserved.
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
