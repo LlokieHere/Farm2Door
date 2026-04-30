@@ -9,6 +9,9 @@
 
     <!-- GOOGLE FONTS -->
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Tienne:wght@400;700;900&display=swap" rel="stylesheet">
     <!-- BOOTSTRAP CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- BOOTSTRAP ICONS -->
@@ -17,7 +20,7 @@
 </head>
     <body>
 <!-- NAVBAR -->
-<nav class="navbar navbar-expand-lg navbar-dark" style="background-color: var(--dark-navy);">
+<nav class="navbar navbar-expand-lg navbar-dark">
     <div class="container">
 
         <a class="navbar-brand text-dark" href="#">
@@ -30,25 +33,32 @@
 
         <div class="collapse navbar-collapse" id="collapsibleNavId">
             <ul class="navbar-nav ms-auto nav-gap">
+
                 <li class="nav-item">
                     <a class="nav-link" href="home.html">Home</a>
                 </li>
+
                 <li class="nav-item">
                     <a class="nav-link active" href="about_us.html">About us</a>
                 </li>
+
                 <li class="nav-item">
                     <a class="nav-link" href="product.html">Products</a>
                 </li>
+
                 <li class="nav-item">
                     <a class="nav-link" href="register.html">Register</a>
                 </li>
+
                 <li class="nav-item">
                     <a class="nav-link" href="contact.html">Contact</a>
                 </li>
+
                 <li class="nav-item">
                     <a class="nav-link" href="biography.html">Biography</a>
                 </li>
-                <li class="nav-item text-dark" style="background-color: var(--orange); border-radius: 5px; padding: 2px 10px; box-shadow: 0 4px 16px rgba(255,155,81,0.35);">
+
+                <li class="nav-item" style="background-color: var(--orange); border-radius: 5px; padding: 2px 10px;box-shadow: 0 4px 16px rgba(255,155,81,0.35)">
                     <a class="nav-link" href="cart.html" style="color: var(--dark-navy) !important;">
                         <i class="bi bi-cart"></i> Cart
                     </a>
@@ -58,6 +68,68 @@
 
     </div>
 </nav>
+
+<!-- HERO -->
+<section class="about-hero mt-6">
+    <p class="hero-eyebrow" style="font-size: 20px !important;">Our Story</p>
+    <h1 class="hero-title">Fresh from the farm,<br><em>straight to you.</em></h1>
+    <p class="hero-sub" style="font-size: 20px !important;">We believe everyone deserves access to honest, locally-grown food — harvested with care and delivered with purpose.</p>
+    <div class="hero-divider"></div>
+</section>
+ 
+<!-- CARDS -->
+<section class="cards-section">
+    <div class="cards-row">
+ 
+        <!-- Mission -->
+        <div class="f2d-card">
+            <div class="card-accent-bar"></div>
+            <div class="card-icon-badge">🌿</div>
+            <span class="card-tag" style="font-size: 20px !important;">Our Mission</span>
+            <h2 class="card-title" style="font-size: 25px !important;">Feeding communities with honesty</h2>
+            <div class="card-divider"></div>
+            <p class="card-para" style="font-size: 20px !important;">
+                We connect local farmers directly to families, eliminating middlemen and ensuring every product you receive is fresh, traceable, and grown with intention.
+            </p>
+            <div class="card-stat">
+                <span class="card-stat-dot"></span>
+                Supporting 40+ local farms
+            </div>
+        </div>
+ 
+        <!-- Vision -->
+        <div class="f2d-card">
+            <div class="card-accent-bar"></div>
+            <div class="card-icon-badge">🌍</div>
+            <span class="card-tag" style="font-size: 20px !important;">Our Vision</span>
+            <h2 class="card-title" style="font-size: 25px !important;">A future where food is transparent</h2>
+            <div class="card-divider"></div>
+            <p class="card-para" style="font-size: 20px !important;">
+                We envision a world where the distance between farm and table is measured in trust, not miles — where every family knows exactly where their food comes from.
+            </p>
+            <div class="card-stat">
+                <span class="card-stat-dot"></span>
+                Zero food waste by 2030
+            </div>
+        </div>
+ 
+    </div>
+</section>
+ 
+<!-- TAGS -->
+<section class="tags-section">
+    <div class="tag-row">
+        <span class="f2d-tag">Locally Sourced</span>
+        <span class="f2d-tag">Sustainably Grown</span>
+        <span class="f2d-tag">Community First</span>
+        <span class="f2d-tag">Zero Middlemen</span>
+        <span class="f2d-tag">Farm Transparency</span>
+    </div>
+</section>
+ 
+<!-- BOOTSTRAP JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js">
+    </script>
     
 </body>
 </html>
