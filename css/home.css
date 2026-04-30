@@ -1,18 +1,46 @@
 :root {
-  --green: #628141;
+  --green:      #628141;
   --dark-green: #40513B;
   --light-gray: #BFC9D1;
-  --orange: #FF9B51;
-  --off-white: #EAEFEF;
-  --dark-navy: #25343F;
-  --white: #ffffff;
+  --orange:     #FF9B51;
+  --off-white:  #EAEFEF;
+  --dark-navy:  #25343F;
+  --white:      #ffffff;
 
   --font-display: 'Playfair Display', serif;
-  --font-body: 'DM Sans', sans-serif;
+  --font-body:    'DM Sans', sans-serif;
 
-  --radius: 12px;
-  --shadow: 0 4px 24px rgba(37,52,63,0.10);
+  --radius:    12px;
+  --shadow:    0 4px 24px rgba(37,52,63,0.10);
   --shadow-lg: 0 8px 40px rgba(37,52,63,0.16);
+}
+
+/* =========================
+   BODY & BACKGROUND
+========================= */
+
+body {
+  background-image: url("../asset/background.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  font-family: var(--font-body);
+  margin: 0;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: linear-gradient(80deg, #25343F, #40513B, #628141);
+  opacity: 0.85;
+  z-index: -1;
+  animation: bgMove 8s ease-in-out infinite alternate;
+}
+
+@keyframes bgMove {
+  from { filter: hue-rotate(0deg); }
+  to   { filter: hue-rotate(15deg); }
 }
 
 /* =========================
@@ -28,74 +56,90 @@
 ========================= */
 
 .navbar {
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
-  align-items: center;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+  background-color: rgba(37, 52, 63, 0.85) !important;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+.nav-items{
+    color: var(--light-gray);
 }
 
 .navbar-logo {
-  height: 250px;
+  height: 50px;
   width: auto;
   object-fit: contain;
 }
 
+/* Nav links — light text on dark bg */
+.nav-link {
+  color: var(--light-gray) !important;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 500;
+  padding: 6px 14px !important;
+  border-radius: 8px;
+  transition: all 0.2s;
+}
+
+.nav-link:hover,
+.nav-link.active {
+  color: var(--white) !important;
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.nav-gap {
+  gap: 0.25rem;
+}
+
 /* =========================
-   BASE BUTTON (UIVERSE STYLE)
+   TYPOGRAPHY
+========================= */
+
+h1 {
+  font-family: var(--font-display);
+  font-size: clamp(2.4rem, 5vw, 4.5rem);
+  font-weight: 900;
+  color: var(--off-white);
+  line-height: 1.15;
+  margin-bottom: 1rem;
+}
+
+p {
+  font-family: var(--font-body);
+  color: var(--off-white);
+  font-size: 1.05rem;
+  line-height: 1.75;
+}
+
+/* =========================
+   BUTTONS — BASE
 ========================= */
 
 button {
-  font-size: 17px;
-  padding: 1em 2.7em;
-  font-weight: 500;
-  background: #1f2937;
-  color: white;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 600;
+  padding: 0.75em 2em;
   border: none;
   position: relative;
   overflow: hidden;
-  border-radius: 0.6em;
+  border-radius: 50px;
   cursor: pointer;
-  transition: transform 0.2s ease;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4em;
 }
 
-/* =========================
-   GRADIENT LAYER (FIXED)
-========================= */
-
-.gradient {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  left: 0;
-  top: 0;
-  border-radius: 0.6em;
-  margin-top: -0.25em;
-
-  background-image: linear-gradient(
-    135deg,
-    var(--green),
-    var(--dark-green),
-    var(--dark-navy)
-  );
-}
-
-/* =========================
-   LABEL
-========================= */
-
-.label {
-  position: relative;
-  top: -1px;
-  z-index: 2;
-}
-
-/* =========================
-   ANIMATION LAYER
-========================= */
-
+/* ripple layer */
 .transition {
   transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
   transition-duration: 500ms;
-  background-color: rgba(16, 185, 129, 0.6);
+  background-color: rgba(255, 255, 255, 0.15);
   border-radius: 9999px;
   width: 0;
   height: 0;
@@ -103,61 +147,93 @@ button {
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
+  z-index: 0;
 }
 
 button:hover .transition {
-  width: 14em;
-  height: 14em;
+  width: 16em;
+  height: 16em;
 }
 
-/* click effect */
+.label {
+  position: relative;
+  z-index: 2;
+}
+
+.gradient {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  border-radius: inherit;
+}
+
 button:active {
   transform: scale(0.97);
 }
 
 /* =========================
-   PRIMARY BUTTON (ORDER NOW)
+   PRIMARY BUTTON — ORDER NOW
 ========================= */
 
-.btn-primary {
-  background: var(--green);
+.btn-primary-custom {
+  background: var(--orange);
+  color: var(--white);
+  box-shadow: 0 4px 16px rgba(255,155,81,0.35);
+  margin-right: 12px;
 }
 
-.btn-primary .gradient {
-  background-image: linear-gradient(
-    135deg,
-    var(--green),
-    var(--dark-green),
-    var(--orange)
-  );
+.btn-primary-custom .gradient {
+  background: linear-gradient(135deg, rgba(255,255,255,0.08), transparent);
 }
 
-.btn-primary:hover {
+.btn-primary-custom:hover {
   transform: translateY(-2px);
-  box-shadow: var(--shadow-lg);
+  box-shadow: 0 8px 24px rgba(255,155,81,0.45);
+  color: var(--white);
 }
 
 /* =========================
-   SECONDARY BUTTON (CREATE ACCOUNT)
+   SECONDARY BUTTON — CREATE ACCOUNT
 ========================= */
 
-.btn-secondary {
-  background: var(--dark-navy);
-  opacity: 0.9;
+.btn-secondary-custom {
+  background: transparent;
+  color: var(--white);
+  border: 2px solid rgba(255, 255, 255, 0.4);
 }
 
-.btn-secondary .gradient {
-  background: rgba(255, 255, 255, 0.08);
+.btn-secondary-custom .gradient {
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.btn-secondary-custom:hover {
+  transform: translateY(-2px);
+  border-color: var(--white);
+  background: rgba(255,255,255,0.08);
+  color: var(--white);
 }
 
 /* =========================
-   OPTIONAL TEXT FIX
+   STATS ROW
 ========================= */
 
-h1 {
-  font-family: var(--font-display);
-}
-
-p {
+.stat-label {
+  color: var(--off-white);
   font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 0.95rem;
+  margin-bottom: 2px;
+}
+
+.stat-value {
+  color: var(--light-gray);
+  font-family: var(--font-body);
+  font-size: 0.88rem;
+}
+
+.stat-divider {
+  width: 1px;
+  height: 36px;
+  background-color: rgba(255,255,255,0.15);
+  align-self: center;
 }

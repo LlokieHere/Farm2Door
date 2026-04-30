@@ -6,32 +6,59 @@
     <link rel="stylesheet" href="../css/home.css">
     <link rel="icon" type="image/png" href="../asset/Icon.png">
     <title>Farm2Home</title>
-    
-    <!-- Bootstrap CSS and Icons -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- GOOGLE FONTS -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <!-- BOOTSTRAP ICONS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 </head>
 
 <body>
+    <div class="transparent_colorBg"></div>
 
 <!-- NAVBAR -->
 <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: var(--dark-navy);">
     <div class="container">
 
-        <a class="navbar-brand text-dark" href="#"><img src="../asset/site_logo.png" alt="Farm2Door Logo"></a>
+        <a class="navbar-brand text-dark" href="#">
+            <img src="../asset/site_logo.png" class="navbar-logo" alt="Farm2Door Logo">
+        </a>
 
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavId">
             <span class="navbar-toggler-icon"></span>
         </button>
 
         <div class="collapse navbar-collapse" id="collapsibleNavId">
-            <ul class="navbar-nav ms-auto">
-                <li class="nav-item"><a class="nav-link text-dark" href="home.html">Home</a></li>
-                <li class="nav-item"><a class="nav-link text-dark" href="about_us.html">About us</a></li>
-                <li class="nav-item"><a class="nav-link text-dark" href="product.html">Products</a></li>
-                <li class="nav-item"><a class="nav-link text-dark" href="register.html">Register</a></li>
-                <li class="nav-item"><a class="nav-link text-dark" href="contact.html">Contact</a></li>
-                <li class="nav-item"><a class="nav-link text-dark" href="biography.html">Biography</a></li>
+            <ul class="navbar-nav ms-auto nav-gap">
+                <li class="nav-item">
+                    <a class="nav-link" href="home.html">Home</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="about_us.html">About us</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="product.html">Products</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="register.html">Register</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="contact.html">Contact</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="biography.html">Biography</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="biography.html"><i class="bi bi-cart"></i> Cart</a>
+                </li>
+
             </ul>
         </div>
 
@@ -43,47 +70,53 @@
     <div class="row align-items-start">
         <div class="col-md-6">
 
-            <h1 style="font-size: 80px; white-space: nowrap;">Farm-Fresh Goods<br>Delivered Daily</h1>
+            <h1 style="font-size: 80px; white-space: nowrap; color: var(--off-white);">
+                Farm-Fresh Goods<br><span style="color: var(--orange);">Delivered Daily</span>
+            </h1>
 
-            <p style="font-size: 20px;">
+            <p style="font-size: 20px; color: var(--off-white);">
                 Your one-stop shop for fresh, locally<br>
                 sourced produce delivered<br>
                 straight to your door.
             </p>
 
-            <button class="btn-primary-custom">
+            <button class="btn-primary-custom text-dark" style="border-radius: 15px;">
                 <span class="transition"></span>
                 <span class="gradient"></span>
-                <span class="label">Order Now</span>
+                <span class="label">
+                    <i class="bi bi-cart"></i> Order Now
+                </span>
             </button>
 
-            <button class="btn-secondary-custom">
+            <button class="btn-secondary-custom" style="border-radius: 15px;">
                 <span class="transition"></span>
                 <span class="gradient"></span>
-                <span class="label">Create Account</span>
+                <span class="label">
+                    <i class="bi bi-person-plus"></i> Create Account
+                </span>
             </button>
 
             <div class="d-flex gap-5 mt-5">
                 <div>
-                    <p class="mb-0"><b>Free Delivery</b></p>
+                    <p class="mb-0"><b><i class="bi bi-truck"></i> Free Delivery</b></p>
                     <p class="mb-0">Orders Over $50</p>
                 </div>
 
                 <div>
-                    <p class="mb-0"><b>100% Organic</b></p>
+                    <p class="mb-0"><b><i class="bi bi-tree"></i> 100% Organic</b></p>
                     <p class="mb-0">Certified Produce</p>
                 </div>
 
                 <div>
-                    <p class="mb-0"><b>Fresh Daily</b></p>
+                    <p class="mb-0"><b><i class="bi bi-sun"></i> Fresh Daily</b></p>
                     <p class="mb-0">Harvested Fresh</p>
                 </div>
             </div>
-
+                
         </div>
-
     </div>
 </div>
+
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
