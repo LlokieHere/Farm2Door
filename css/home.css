@@ -240,3 +240,129 @@ button:active {
   background-color: rgba(255,255,255,0.15);
   align-self: center;
 }
+
+/* =========================
+   RESPONSIVE FIXES
+========================= */
+
+/* Allow text to wrap on small screens */
+h1 {
+  white-space: normal;
+}
+
+/* Make hero image responsive instead of fixed/overflowing */
+.hero-img {
+  position: static;
+  width: 100%;
+  max-width: 500px;
+  height: auto;
+  transform: none;
+  display: block;
+  margin: 0 auto;
+}
+
+/* Adjust hero card height for smaller screens */
+.hero-card {
+  min-height: auto;
+  padding: 2rem 1rem;
+}
+
+/* Reduce left padding on smaller screens */
+@media (max-width: 768px) {
+  .hero-card .col-md-6 {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+    text-align: center;
+  }
+
+  /* Stack buttons nicely */
+  .btn-primary-custom,
+  .btn-secondary-custom {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  /* Stack stats vertically */
+  .hero-card .d-flex {
+    flex-direction: column !important;
+    gap: 1.5rem !important;
+    align-items: center;
+  }
+}
+
+/* Medium screens (tablet) */
+@media (max-width: 992px) {
+  .hero-img {
+    max-width: 400px;
+  }
+
+  h1 {
+    font-size: 2.5rem !important;
+  }
+}
+
+/* Small phones */
+@media (max-width: 576px) {
+  h1 {
+    font-size: 2rem !important;
+  }
+
+  p {
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-card .col-md-6 {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+    text-align: center;
+  }
+
+  /* Keep stats INLINE */
+  .hero-card .d-flex {
+    flex-direction: row !important;
+    flex-wrap: wrap; /* allows wrapping instead of breaking layout */
+    justify-content: center;
+    gap: 1.5rem !important;
+  }
+
+  /* Optional: center each stat block */
+  .hero-card .d-flex > div {
+    text-align: center;
+  }
+
+  /* Buttons full width */
+  .btn-primary-custom,
+  .btn-secondary-custom {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+}
+
+/* Wrap buttons properly */
+.hero-card .btn-primary-custom,
+.hero-card .btn-secondary-custom {
+  flex: 1;
+  justify-content: center;
+}
+
+/* Create a flex container for the buttons */
+.hero-card .btn-primary-custom,
+.hero-card .btn-secondary-custom {
+  display: inline-flex;
+}
+
+/* Force equal sizing when they are side-by-side */
+.hero-card .btn-primary-custom + .btn-secondary-custom {
+  margin-left: 10px;
+}
+
+/* Mobile behavior */
+@media (max-width: 768px) {
+  .hero-card .btn-primary-custom,
+  .hero-card .btn-secondary-custom {
+    width: fit-content;
+    flex: none;
+  }
+}
