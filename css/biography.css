@@ -1,27 +1,28 @@
 :root {
-  --green: #628141;
+  --green:      #628141;
   --dark-green: #40513B;
   --light-gray: #BFC9D1;
-  --orange: #FF9B51;
-  --off-white: #EAEFEF;
-  --dark-navy: #25343F;
-  --white: #ffffff;
+  --orange:     #FF9B51;
+  --off-white:  #EAEFEF;
+  --dark-navy:  #25343F;
+  --white:      #ffffff;
 
   --font-display: 'Bebas Neue','Playfair Display', serif;
-  --font-body: 'DM Sans', sans-serif;
+  --font-body:    'DM Sans', sans-serif;
 
-  --radius: 12px;
-  --shadow: 0 4px 24px rgba(37,52,63,0.10);
+  --radius:    12px;
+  --shadow:    0 4px 24px rgba(37,52,63,0.10);
+  --shadow-lg: 0 8px 40px rgba(37,52,63,0.16);
 }
 
-/* GLOBAL */
-* { box-sizing: border-box; }
-
+/* BODY & BACKGROUND */
 body {
-  margin: 0;
+  background-image: url("../asset/background.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
   font-family: var(--font-body);
-  background: url("../asset/background.jpg") center/cover no-repeat;
-  min-height: 100vh;
+  margin: 0;
 }
 
 body::before {
@@ -29,17 +30,28 @@ body::before {
   position: fixed;
   inset: 0;
   background: linear-gradient(80deg, #25343F, #40513B, #628141);
-  opacity: 0.87;
+  opacity: 0.85;
   z-index: -1;
+  animation: bgMove 8s ease-in-out infinite alternate;
 }
 
-/* ─────────────────────────────
-   NAVBAR
-──────────────────────────── */
+@keyframes bgMove {
+  from { filter: hue-rotate(0deg); }
+  to   { filter: hue-rotate(15deg); }
+}
+
+/* LAYOUT */
+.mt-6 {
+  margin-top: 2rem;
+}
+
+/* NAVBAR */
 .navbar {
-  padding: 0.75rem 0;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
   background-color: rgba(37, 52, 63, 0.85) !important;
   backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
   border-bottom: 1px solid rgba(255,255,255,0.08);
 }
 
@@ -69,88 +81,114 @@ body::before {
   gap: 0.25rem;
 }
 /* HERO */
-.contact-hero {
-  background: linear-gradient(135deg, var(--dark-green), var(--dark-navy));
-  padding: 80px 20px;
+.bio-hero {
   text-align: center;
+  padding: 80px 20px;
 }
 
-.contact-hero h1 {
-  color: var(--off-white);
+.bio-hero h1 {
   font-family: var(--font-display);
+  color: var(--off-white);
+  font-size: 3rem;
 }
 
-.contact-hero p {
+.bio-hero p {
   color: var(--light-gray);
 }
 
 /* MAIN */
-.contact-main {
-  background: var(--off-white);
-  padding: 60px 0;
+.bio-main {
+  padding: 60px 20px;
 }
 
-.section-wrap {
-  max-width: 1200px;
+.bio-wrap {
+  max-width: 1100px;
   margin: auto;
-  padding: 0 20px;
-}
-
-.contact-layout {
   display: grid;
-  grid-template-columns: 1fr 1.3fr;
+  grid-template-columns: 1fr 1.2fr;
   gap: 40px;
 }
 
-/* INFO */
-.contact-info {
-  background: var(--dark-navy);
-  color: var(--off-white);
+/* PROFILE CARD */
+.bio-card {
+  background: rgba(37,52,63,0.7);
+  backdrop-filter: blur(10px);
+  border-radius: 15px;
   padding: 30px;
-  border-radius: var(--radius);
+  text-align: center;
+  color: var(--off-white);
 }
 
-.contact-item {
-  display: flex;
-  gap: 12px;
+.bio-image img {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 15px;
+}
+
+.bio-card h2 {
+  font-family: var(--font-display);
+}
+
+.role {
+  color: var(--orange);
+  font-weight: 600;
+}
+
+.bio-text {
+  font-size: 0.95rem;
+  margin: 15px 0;
+}
+
+.bio-social a {
+  margin: 0 8px;
+  font-size: 1.2rem;
+  color: var(--light-gray);
+}
+
+.bio-social a:hover {
+  color: var(--orange);
+}
+
+/* SKILLS */
+.bio-skills {
+  background: var(--white);
+  padding: 30px;
+  border-radius: 15px;
+}
+
+.bio-skills h3 {
+  font-family: var(--font-display);
   margin-bottom: 20px;
 }
 
-.contact-icon {
-  background: var(--green);
-  width: 40px;
-  height: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 8px;
+.skill {
+  margin-bottom: 20px;
 }
 
-/* FORM */
-.contact-form-box {
-  background: white;
-  padding: 30px;
-  border-radius: var(--radius);
-  box-shadow: var(--shadow);
+.skill span {
+  font-weight: 600;
 }
 
-.form-group { margin-bottom: 15px; }
-
-.form-group input,
-.form-group textarea {
-  width: 100%;
-  padding: 10px;
-  border-radius: 6px;
-  border: 1px solid #ccc;
+.skill-bar {
+  height: 8px;
+  background: #ddd;
+  border-radius: 10px;
+  margin-top: 6px;
 }
 
-.contact-submit-btn {
-  width: 100%;
+.fill {
+  height: 100%;
   background: var(--orange);
-  color: white;
-  padding: 12px;
-  border: none;
-  border-radius: 8px;
+  border-radius: 10px;
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .bio-wrap {
+    grid-template-columns: 1fr;
+  }
 }
 
 /* FOOTER */
