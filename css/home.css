@@ -437,6 +437,16 @@ h1 {
   animation: fadeUp 0.7s ease forwards 0.4s;
 }
 
+button a {
+    text-decoration: none;
+    color: inherit; /* takes the button's text color */
+}
+
+button a:hover {
+    text-decoration: none;
+    color: inherit;
+}
+
 /* Stats (Free Delivery, etc.) */
 .hero-card .d-flex.mt-5 {
   opacity: 0;

@@ -317,3 +317,20 @@ footer {
     margin-bottom: 8px;
   }
 }
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.contact-hero,
+.contact-main,
+.footer {
+  animation: fadeInUp 0.8s ease forwards;
+}
