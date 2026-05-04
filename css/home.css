@@ -97,7 +97,6 @@ body::before {
   position: absolute;
   right: -60px;
   bottom: -100px;
-  width: 750px;
   transform: rotate(-12deg);
   filter: drop-shadow(10px 25px 30px rgba(0,0,0,0.3));
 
@@ -105,8 +104,9 @@ transition: transform 0.3s ease, filter 0.3s ease;
 }
 
 .hero-img:hover {
-  transform: rotate(-12deg) translate(10px, -10px);
+  transform: rotate(-12deg) scale(5) translate(10px, -10px);
   filter: drop-shadow(15px 30px 40px var(--green));
+
 }
 
 /* TYPOGRAPHY */
